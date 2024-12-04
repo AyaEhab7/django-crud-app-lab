@@ -30,6 +30,7 @@
 
     <!-- Reservation Table -->
     <h3>Reservations:</h3>
+    {% if car.reservation_set.all.count %}
     <table>
       <thead>
         <tr>
@@ -46,6 +47,11 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+    <div class="subsection-content">
+      <p>⚠️ {{cat.name}} has not been reservation!</p>
+    </div>
+  {% endif %}    
   </div>
 </section>
 {% endblock %}

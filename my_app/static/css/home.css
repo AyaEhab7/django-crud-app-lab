@@ -1,95 +1,109 @@
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100%;
-  }
-  
-  main > section {
-    width: 100%;
-    padding: 10px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  .header-logo-container {
-    display: none;
-  }
-  
-  .logo-container {
-    max-width: 375px;
-  }
-  
-  .car-container {
-    width: 80%;
-  }
-  
-  .welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-  }
-  
-  .welcome h1 {
-    font-size: clamp(3.2rem, 3vw, 4.8rem);
-    margin: 10px 0;
-  }
-  
-  .welcome > p {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 14px 0 0px;
-  }
-  
-  .welcome label {
-    font-size: var(--font-reg);
-    margin-bottom: 6px;
-  }
-  
-  .welcome input {
-    font-size: var(--font-l);
-    padding: 2px 4px;
-  }
-  
-  .welcome .btn {
-    align-self: flex-end;
-    margin-right: 0;
-    margin-top: 16px;
-  }
+/* General reset and box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+/* Logo container with car image */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e0e0e0;
+}
+
+.car-container {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .splash-car {
-    width: 100%;  /* Adjust to make the image take full width */
-    max-width: 600px;  /* Optional: Set a maximum width */
-    height: auto;  /* Maintain aspect ratio */
-    margin: 0 auto;  /* Center the image */
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Login form styling */
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.login {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login input[type="text"], 
+.login input[type="password"], 
+.login input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login input[type="text"]:focus, 
+.login input[type="password"]:focus, 
+.login input[type="email"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.login button.submit {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login button.submit:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .logo-container {
+    padding: 20px;
   }
 
-  
-  @media only screen and (min-width: 768px) {
-    main {
-      justify-content: space-around;
-    }
-  
-    main > section {
-      width: 40%;
-    }
-  
-    .welcome {
-      border: var(--borders);
-      padding: 20px;
-      border-radius: var(--card-border-radius);
-      box-shadow: var(--card-box-shadow);
-      width: 100%;
-    }
-  
-    .logo-container {
-      max-width: 520px;
-    }
+  .splash-car {
+    width: 100%;
+    max-width: none;
   }
-  
+
+  .login {
+    width: 90%;
+  }
+}

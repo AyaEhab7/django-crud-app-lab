@@ -1,9 +1,8 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
-{% endblock %}
+<link rel="stylesheet" href="{% static "css/home.css" %}">
+{% endblock head %}
 
 {% block content %}
 <section class="logo-container">
@@ -11,4 +10,17 @@
     <img src="{% static 'images/splash-car.jpg' %}" alt="A cool car" class="splash-car" />
 </div>
 </section>
-{% endblock %}
+
+{% if not user.is_authenticated %}
+  <section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %} {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btn submit">Login</button>
+    </form>
+  </section>
+{% endif %}
+
+
+{% endblock content %}
