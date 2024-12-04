@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Car 
-
+from .forms import ReservationForm
 
 # class Car:
 #     def __init__(self, name, model, price, description, year):
@@ -35,7 +35,19 @@ def car_index(request):
 
 def car_detail(request, car_id):
     car = Car.objects.get(id=car_id)  # Get the car object by its ID
-    return render(request, 'cars/detail.html', {'car': car})
+    reservation_form = ReservationForm()
+    return render(request, 'cars/detail.html', {
+        'car': car, 'reservation_form': reservation_form
+    })
+
+# add-reservation
+def add_reservation(request, car_id):
+    form = ReservationForm(request.POST)
+    if form.is_valid():
+        new_reservation = form.save(commit=False)
+        new_reservation.car_id = car_id
+        new_reservation.save()
+    return redirect('car-detail', car_id=car_id)
 
 
 # CBVs
@@ -46,9 +58,10 @@ class CarCreate(CreateView):
 
 class CarUpdate(UpdateView):
     model = Car
-    # Let's disallow the renaming of a cat by excluding the name field!
     fields = ['name', 'model', 'price', 'description', 'year']
 
 class CarDelete(DeleteView):
     model = Car
     success_url = '/cars/'
+
+
