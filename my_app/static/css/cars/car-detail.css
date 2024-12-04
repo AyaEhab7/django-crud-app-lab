@@ -1,0 +1,25 @@
+.car-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .car-img {
+    width: 40%;
+  }
+  
+  .car-details {
+    width: 60%;
+  }
+  
+  .car-details h1 {
+    font-size: 2em;
+  }
+  
+  .car-details p {
+    font-size: 1.2em;
+  }
+  
+  .car-container img {
+    width: 100%;
+  }
+  
