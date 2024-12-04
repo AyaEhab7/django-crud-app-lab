@@ -6,9 +6,13 @@
 {% endblock %} 
 {% block content %}
 <div class="page-header">
-
-    <h1>{% if object %} Edit Car Rental {% else %} Add a New Car to Rental {% endif %}</h1>
-
+      <!-- Using the generic 'object' variable -->
+      {% if car %}
+        <h1>Edit Car Rental {{ car.name }}</h1>
+      {% else %}
+        <h1>Add a New Car to Rental</h1>
+      {% endif %}
+    </div>
     <form action="" method="post" class="form-container">
         {% csrf_token %}
         <table>

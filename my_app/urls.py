@@ -9,4 +9,6 @@ urlpatterns = [
     path('cars/<int:car_id>/', views.car_detail, name='car-detail'),  # Add the dynamic route
     path('cars/create/', views.CarCreate.as_view(), name='car-create'),
 
+    path('cars/<int:pk>/update/', views.CarUpdate.as_view(), name='car-update'),
+    path('cars/<int:pk>/delete/', views.CarDelete.as_view(), name='car-delete'),
 ]

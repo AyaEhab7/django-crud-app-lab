@@ -14,6 +14,11 @@
     <p><strong>model:</strong>{{ car.model }}<p>
     <p><strong>year:</strong>({{ car.year }})</p>
     <p><strong>Description:</strong> {{ car.description }}</p>
+
+    <div class="car-actions">
+        <a href="{% url 'car-update' car.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'car-delete' car.id %}" class="btn danger">Delete</a>
+      </div>
   </div>
 </section>
 {% endblock %}
