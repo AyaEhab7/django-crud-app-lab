@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Car 
 
 
@@ -27,7 +28,6 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# list of cars
 # Fetch all car data from the database
 def car_index(request):
     cars = Car.objects.all()  
@@ -36,3 +36,10 @@ def car_index(request):
 def car_detail(request, car_id):
     car = Car.objects.get(id=car_id)  # Get the car object by its ID
     return render(request, 'cars/detail.html', {'car': car})
+
+
+# CBVs
+class CarCreate(CreateView):
+    model = Car
+    fields = ['name', 'model', 'price', 'description', 'year']
+    success_url = '/cars/'
